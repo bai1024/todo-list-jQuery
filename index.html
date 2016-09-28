@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="css/main.css">
+  <title>todo list</title>
+</head>
+<body>
+  <div id="space">
+    <div id="todolist">      
+      <p id="title">
+        TODO
+      </p>
+        <div id="addtodo-area">
+          <button id="addtodo">
+            <i class="fa fa-plus-circle"></i>
+          </button>
+          <input type="text" id="inputTask">
+          <div id="footer">
+            <span>
+              <strong>1</strong>
+              item left
+            </span>
+            <ul id="filters">
+              <li>All</li>
+              <li>Active</li>
+              <li>Completed</li>
+            </ul>
+            <button id="clear-completed">
+              Clear completed
+            </button>
+          </div>
+        </div>
+
+      <div id="displaytodo-list">
+        <ul id="listTask">
+          
+        </ul>
+      </div>
+    </div>
+  </div>
+  <script src='js/jquery-3.1.1.min.js'></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
