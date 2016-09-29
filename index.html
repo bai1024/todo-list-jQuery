@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/font-awesome-4.6.3/css/font-awesome.css">
   <title>todo list</title>
 </head>
 <body>
@@ -13,11 +14,11 @@
       </p>
         <div id="addtodo-area">
           <button id="addtodo">
-            <i class="fa fa-plus-circle"></i>
+            <i class="fa fa-plus" aria-hidden="true"></i>
           </button>
           <input type="text" id="inputTask">
           <div id="footer">
-            <span>
+            <span todo-count>
               <strong>1</strong>
               item left
             </span>
@@ -41,5 +42,7 @@
   </div>
   <script src='js/jquery-3.1.1.min.js'></script>
   <script src="js/main.js"></script>
+<!--   <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js'></script>
+ -->  <!-- <script src="js/test.js"></script> -->
 </body>
 </html>

@@ -17,11 +17,16 @@
   button:first-child
     background:#e91e63
     position: absolute
-    top: 250px
+    top: 270px
     margin-left: 37%
-    height: 65px
-    width: 65px
+    height: 60px
+    width: 60px
     border-radius: 50%
+    border: none
+    outline: none
+    > i
+      color: white
+      font-size: 30px
 
 #footer
   font-size 15px
@@ -64,20 +69,37 @@
       margin-top: 0
       padding: 0
 #listTask  
-  > li 
+  li 
     width: inherit;
     padding: 1px 70px;
-    margin: 0;
+    margin: 0 0 2px;
     box-sizing: border-box;
     font-size:15px
     cursor:pointer
     background: #F498A5
-  > hr
-    border-bottom-width: 0
-    margin: 0
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+
+    #toggle
+      margin-right: 15px
+    p
+      word-break: break-all
+      flex: 1
+
+    .close
+      float: right;
+      cursor: pointer;
+      color: black;
+      background: white;
+      padding: 1px 5px;
+      border-radius: 20px;
+      font-size: 14px;
+
 
 #title
   color:#e91e63
   font-weight:800
-
+  font-size: 30px;
+  margin-bottom: 20px;
 
