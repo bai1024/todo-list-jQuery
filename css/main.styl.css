@@ -18,7 +18,7 @@
     background:#e91e63
     position: absolute
     top: 270px
-    margin-left: 37%
+    margin-left: 470px
     height: 60px
     width: 60px
     border-radius: 50%
@@ -45,6 +45,11 @@
       padding-left: 10px
       padding-right: 10px
       list-style: none
+      &:hover
+        border 1px solid transparent
+        border-color rgba(175, 47, 47, 0.1)
+        cursor: pointer
+
 
 #clear-completed 
   background: none;
