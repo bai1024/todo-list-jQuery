@@ -1,40 +1,12 @@
 var counter = 0
+
 //点击按钮添加todo事件
 $("#addtodo").click(function(evt){
   var task = $("#inputTask").val()
   if (task === "") {
     $("#inputTask").addClass('error')
   } else {
-    var $li = $("<li class='active'><input class='toggle' type='checkbox'></input><p>"+ task +"</p><span class='close'>x</span></li>")
-    $("#listTask").append($li)
-    $('#inputTask').removeClass('error')
-    counter++
-    $('#todo-count').text(counter + "item left")
-
-    $li.find(".close").click(function(){
-     $(this).closest('li').remove()
-     counter--
-      $('#todo-count').text(counter + "item left")
-    })
-
-    $("#inputTask").val("")
-
-//点击checkbox事件
-    $li.find('.toggle').click(function(){
-      if ($(this).closest('li').hasClass('completed')){
-        $(this).closest('li').removeClass('completed')
-        $(this).closest('li').addClass('active')
-        counter++
-        $('#todo-count').text(counter + "item left")
-
-      } else {
-          $(this).closest('li').removeClass('active')
-          $(this).closest('li').addClass('completed')
-           counter--
-          $('#todo-count').text(counter + "item left")
-
-      }
-    })
+    addTodo()
   } 
 })
 
@@ -45,45 +17,80 @@ document.addEventListener("keydown", function(e){
     if (task === "") {
       $("#inputTask").addClass('error')
     } else {
-//事件数量统计     
-      counter++
-      var $li = $("<li class='active'><input class='toggle' type='checkbox'></input><p>"+ task +"</p><span class='close'>x</span></li>")
-      $("#listTask").append($li)
-      $('#inputTask').removeClass('error')
-      $('#todo-count').text(counter + "item left")
-
-      $li.find(".close").click(function(){
-       $(this).closest('li').remove()
-       counter--
-        $('#todo-count').text(counter + "item left")
-      })
-
-      $("#inputTask").val("")
-
-      $li.find('.toggle').click(function(){
-        if ($(this).closest('li').hasClass('completed')){
-          $(this).closest('li').removeClass('completed')
-          $(this).closest('li').addClass('active')
-          counter++
-          $('#todo-count').text(counter + "item left")
-
-        } else {
-            $(this).closest('li').removeClass('active')
-            $(this).closest('li').addClass('completed')
-             counter--
-            $('#todo-count').text(counter + "item left")
-
-        }
-      })
+      addTodo()
     }
   }
 })
 
-//filter点击添加样式
-$('#filters li').click(function(){
-  $(this).addClass('selected').siblings().removeClass('selected')
-})
+function Counter (n){
+  var count = Number($('#todo-count').find("strong").text())
+  count += n
+  $('#todo-count').find("strong").text(count)
+  return count
+}
 
+function addTodo(){
+  var task = $("#inputTask").val()
+  var $li = $("<li class='active'><input class='toggle' type='checkbox' /><div><p>"+ task +"<span class='getTimestamp'></span></p></div><span class='close'>x</span></li>")
+  var currentFilter = $("#filters li").attr("id")
+  if (currentFilter !== "completed"){
+    $li.css('display','inline-flex')
+  }
+  $("#listTask").append($li)
+  $('#inputTask').removeClass('error')
+
+  var count = Counter(1)
+
+  $li.find(".close").click(function(){
+    if($(this).closest('li').hasClass('completed')){
+      $(this).closest('li').remove()
+    } else {
+      $(this).closest('li').remove()
+      var count = Counter(-1)
+    }
+  })
+
+  $("#inputTask").val("")
+
+//点击checkbox事件
+  $li.find('.toggle').click(function(){
+    if ($(this).closest('li').hasClass('completed')){
+      $(this).closest('li').removeClass('completed')
+      $(this).closest('li').addClass('active')
+      $li.find(".getTimestamp").text("")
+      var count = Counter(1)
+    } else {
+        $(this).closest('li').removeClass('active')
+        $(this).closest('li').addClass('completed')
+        $li.find(".getTimestamp").text(moment().format('lll'))
+        var count = Counter(-1)
+    }
+  })
+
+  $li.find("p").on("dblclick", function(evt){
+    var $p = $(evt.target)
+    var text = $p.text()
+    $input = $("<input/>").addClass("editing")
+    $input.val(text)
+    $p.text("")
+    $p.append($input)
+    $input.focus()
+
+    $input.on("blur keydown", function(evt){
+      if(evt.keyCode && evt.keyCode !== 13) return
+        var text = $input.val()
+        $p.text(text)
+        $input.remove()
+      }
+    )
+  })
+} 
+
+//filter点击添加样式
+$('#filters li').on("click", (function(evt){
+  $(this).addClass('selected').siblings().removeClass('selected')
+  })
+)
 // 查看所有任务
 $('#all').click(function(){
   $('.active').show()
@@ -92,14 +99,14 @@ $('#all').click(function(){
 
 //查看未完成任务
 $('#active').click(function(){
-  $('.completed').hide()
-  $('.active').show()
+  $('.active').css('display','inline-flex')
+  $('completed').hide()
 })
 
 //查看已完成任务
 $('#completed').click(function(){
   $('.active').hide()
-  $('.completed').show()
+  $('.completed').css('display','inline-flex')
 })
 
 

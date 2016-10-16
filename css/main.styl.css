@@ -93,7 +93,8 @@
     p
       word-break: break-all
       flex: 1
-
+      span
+        padding-left:70px      
     .close
       float: right;
       cursor: pointer;
