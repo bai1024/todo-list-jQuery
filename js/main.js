@@ -31,7 +31,7 @@ function Counter (n){
 
 function addTodo(){
   var task = $("#inputTask").val()
-  var $li = $("<li class='active'><input class='toggle' type='checkbox' /><div><p>"+ task +"<span class='getTimestamp'></span></p></div><span class='close'>x</span></li>")
+  var $li = $("<li class='active'><input class='toggle' type='checkbox' /><div><p>"+ task +"</p><span class='getTimestamp'></span></div><span class='close'>x</span></li>")
   var currentFilter = $("#filters li").attr("id")
   if (currentFilter !== "completed"){
     $li.css('display','inline-flex')
@@ -100,7 +100,7 @@ $('#all').click(function(){
 //查看未完成任务
 $('#active').click(function(){
   $('.active').css('display','inline-flex')
-  $('completed').hide()
+  $('.completed').hide()
 })
 
 //查看已完成任务

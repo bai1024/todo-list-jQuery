@@ -90,11 +90,15 @@
 
     #toggle
       margin-right: 15px
-    p
-      word-break: break-all
+    div
+      display:inline-flex
+      align-items:center
       flex: 1
+      p
+        word-break: break-word
+        width: 50%
       span
-        padding-left:70px      
+        width: 50%     
     .close
       float: right;
       cursor: pointer;
