@@ -1,5 +1,3 @@
-var counter = 0
-
 //点击按钮添加todo事件
 $("#addtodo").click(function(evt){
   var task = $("#inputTask").val()
@@ -22,7 +20,7 @@ document.addEventListener("keydown", function(e){
   }
 })
 
-function Counter (n){
+function changeCount (n){
   var count = Number($('#todo-count').find("strong").text())
   count += n
   $('#todo-count').find("strong").text(count)
@@ -32,21 +30,21 @@ function Counter (n){
 function addTodo(){
   var task = $("#inputTask").val()
   var $li = $("<li class='active'><input class='toggle' type='checkbox' /><div><p>"+ task +"</p><span class='getTimestamp'></span></div><span class='close'>x</span></li>")
-  var currentFilter = $("#filters li").attr("id")
-  if (currentFilter !== "completed"){
-    $li.css('display','inline-flex')
+  var currentFilter = $("#filters li.selected").attr("id")
+  if (currentFilter === "completed"){
+    $li.hide()
   }
   $("#listTask").append($li)
   $('#inputTask').removeClass('error')
 
-  var count = Counter(1)
-
+  var count = changeCount(1)
   $li.find(".close").click(function(){
-    if($(this).closest('li').hasClass('completed')){
-      $(this).closest('li').remove()
+    var $selected = $(this).closest('li')
+    if($selected.hasClass('completed')){
+      $selected.remove()
     } else {
-      $(this).closest('li').remove()
-      var count = Counter(-1)
+      $selected.remove()
+      var count = changeCount(-1)
     }
   })
 
@@ -54,18 +52,33 @@ function addTodo(){
 
 //点击checkbox事件
   $li.find('.toggle').click(function(){
-    if ($(this).closest('li').hasClass('completed')){
-      $(this).closest('li').removeClass('completed')
-      $(this).closest('li').addClass('active')
+    var checked = $(this).prop("checked")
+    var $selected = $(this).closest('li')
+    if ($selected.hasClass('completed')){
+      $selected.removeClass('completed')
+      $selected.addClass('active')
       $li.find(".getTimestamp").text("")
-      var count = Counter(1)
+      var count = changeCount(1)
     } else {
-        $(this).closest('li').removeClass('active')
-        $(this).closest('li').addClass('completed')
+        $selected.removeClass('active')
+        $selected.addClass('completed')
         $li.find(".getTimestamp").text(moment().format('lll'))
-        var count = Counter(-1)
+        var count = changeCount(-1)
     }
+    var currentFilter = $("#filters li.selected").attr("id")
+
+    if(currentFilter === "active" && checked){
+      $li.hide()
+    }
+    if(currentFilter === "completed" && !checked){
+      $li.hide()
+    }
+
+
   })
+
+
+
 
   $li.find("p").on("dblclick", function(evt){
     var $p = $(evt.target)
@@ -99,14 +112,14 @@ $('#all').click(function(){
 
 //查看未完成任务
 $('#active').click(function(){
-  $('.active').css('display','inline-flex')
+  $('.active').show()
   $('.completed').hide()
 })
 
 //查看已完成任务
 $('#completed').click(function(){
   $('.active').hide()
-  $('.completed').css('display','inline-flex')
+  $('.completed').show()
 })
 
 
