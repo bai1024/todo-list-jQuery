@@ -8,6 +8,12 @@ $("#addtodo").click(function(evt){
   } 
 })
 
+$('#inputTask').on('focus input',function(){
+  $(this).siblings('button').css("opacity",'1');
+}),$('#inputTask').on('blur',function(){
+  $(this).siblings('button').css("opacity",'0');
+})
+
 //按enter键添加todo事件
 document.addEventListener("keydown", function(e){
   if (e.keyCode === 13) {

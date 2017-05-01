@@ -1,41 +1,65 @@
+body
+    color: #FFFFFF;
+    min-height: 100vh;
+    padding: 15px;
+    margin:0
+    background: -webkit-linear-gradient(315deg, #1ebbca, #ebbca7);
+    background: linear-gradient(135deg, #1ebbca, #ebbca7);
+    box-sizing:border-box
+
 #space
   font-family: "Roboto", sans-serif
   color: #FFFFFF
+  display: flex; 
+  align-items: center;   
+  justify-content: center;
+  flex-direction: column;
+  min-height: calc(100vh - 55px);
 
 #todolist
-  width: 500px
-  margin: auto
-  margin-top: 100px
+    width: 100%;
+    max-width: 600px;
   > div
       width: 100%
 
 #addtodo-area
-  height: 150px
-  background: rgba(52, 152, 219, 0.6)
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
 
 #todolist
   button:first-child
-    background:#e91e63
-    position: absolute
-    top: 270px
-    margin-left: 470px
-    height: 60px
-    width: 60px
-    border-radius: 50%
-    border: none
-    outline: none
-    > i
-      color: white
-      font-size: 30px
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    background: #1fbbca;
+    border: none;
+    border-radius: 30px;
+    font-size: 14px;
+    outline: none;
+    color: #FFFFFF;
+    -webkit-transition: opacity 0.3s cubic-bezier(0.22, 0.61, 0.36, 1), -webkit-transform 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
+    transition: opacity 0.3s cubic-bezier(0.22, 0.61, 0.36, 1), -webkit-transform 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
+    transition: transform 0.3s cubic-bezier(0.22, 0.61, 0.36, 1), opacity 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
+    transition: transform 0.3s cubic-bezier(0.22, 0.61, 0.36, 1), opacity 0.3s cubic-bezier(0.22, 0.61, 0.36, 1), -webkit-transform 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
+    opacity: 0;
+    font-weight: 600;
 
 #footer
   font-size 15px
   display: flex
   align-content: space-around
-  padding-top: 30px
+  // padding-top: 30px
   align-items: center
   > span
       padding-left: 10px
+      strong
+        width: 15px;
+        display: inline-block;
 
 #footer
   > #filters
@@ -46,28 +70,40 @@
       padding-left: 10px
       padding-right: 10px
       list-style: none
-      border 1px solid transparent
+      opacity:.7
       &:hover
-        border-color rgba(175, 47, 47, 0.1)
+        opacity:1
         cursor: pointer
 
 
 #clear-completed 
   background: none;
-  color: inherit;
+  color: #fff;
+  opacity:0.7;
   font-size: inherit;
   border: none
   padding-left: 25px
   outline: none
+  &:hover
+    opacity:1
 
 #addtodo-area
  > input
-     width: 80%
-     height: 30px
-     background: white
-     margin-left: 10%
-     margin-top: 30px
-     border-radius: 3%
+    transition: all 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
+    height: 60px;
+    width: 100%;
+    min-width: 200px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    font-size: 18px;
+    font-family: "Fira Sans", sans-serif;
+    font-weight: 300;
+    padding: 10px;
+    padding-right: 50px;
+    background-color: #FFFFFF;
+    box-sizing:border-box;
+    box-shadow: 0 25px 40px -20px #3c4a56;
 
 #listTask
       width:100%
@@ -77,16 +113,24 @@
       padding: 0
 #listTask  
   li 
+    background-color: #FFFFFF;
+    cursor: pointer;
+    // margin-top: 10px;
+    padding: 15px;
+    border-radius: 5px;
+    font-family: "Fira Sans", sans-serif;
+    color: #757575;
+    transition: opacity 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
+    box-sizing: border-box;
     width: inherit;
-    padding: 1px 70px;
-    margin: 0 0 2px;
+    margin: 10px 0 0;
     box-sizing: border-box;
     font-size:15px
     cursor:pointer
-    background: #F498A5
     display: inline-flex;
     align-items: center;
     justify-content: space-between;
+    opacity:1
 
     #toggle
       margin-right: 15px
@@ -95,29 +139,46 @@
       align-items:center
       flex: 1
       p
+        position:relative
         word-break: break-word
         width: 50%
+        margin:0
+        ::before
+              position: absolute;
+              top: 2px;
+              left: 0;
+              bottom: 0;
+              margin: auto;
+              content: "";
+              width: 0px;
+              height: 2px;
+              background-color: rgba(56, 52, 62, 0.3);
+
+              transition: width 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
       span
         width: 50%     
     .close
       float: right;
       cursor: pointer;
-      color: black;
-      background: white;
+      color: #ffffff;
+      background: #1fbbca;
       padding: 0px 6px;
       border-radius: 20px;
       font-size: 14px;
+  .completed
+    opacity:.4
 
 
 #title
-  color:#e91e63
+  color:#ffffff
   font-weight:800
   font-size: 30px;
   margin-bottom: 20px;
 
 .selected
-  border: 1px solid transparent !important
-  border-color: rgba(175, 47, 47, 0.2) !important
+  opacity:1
+  // border: 1px solid transparent !important
+  // border-color: rgba(175, 47, 47, 0.2) !important
   cursor: pointer
 
 
