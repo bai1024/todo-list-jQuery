@@ -35,7 +35,7 @@ function changeCount (n){
 
 function addTodo(){
   var task = $("#inputTask").val()
-  var $li = $("<li class='active'><input class='toggle' type='checkbox' /><div><p>"+ task +"</p><span class='getTimestamp'></span></div><span class='close'>x</span></li>")
+  var $li = $("<li class='active'><div><p><span>"+ task +"</span></p><span class='getTimestamp'></span></div><span class='close'>x</span></li>")
   var currentFilter = $("#filters li.selected").attr("id")
   if (currentFilter === "completed"){
     $li.hide()
@@ -57,8 +57,9 @@ function addTodo(){
   $("#inputTask").val("")
 
 //点击checkbox事件
-  $li.find('.toggle').click(function(){
-    var checked = $(this).prop("checked")
+  $li.find('p > span').click(function(){
+    $(this).toggleClass('done');
+    var checked = $(this).hasClass('completed');
     var $selected = $(this).closest('li')
     if ($selected.hasClass('completed')){
       $selected.removeClass('completed')

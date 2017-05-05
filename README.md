@@ -1,6 +1,6 @@
 ## todo-list-jQuery
 <p align="center">
-    <img src="http://ok7n02kz6.bkt.clouddn.com/FnYSoJPWVVZWsWEnJUzCfscEV_zX.gif" alt="images">
+    <img src="http://ok7n02kz6.bkt.clouddn.com/Fn0u5z0Fr-pYqaTtSm78DtOYnGU2.gif" alt="images">
 </p>    
 
 ### 主要功能

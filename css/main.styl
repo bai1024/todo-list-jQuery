@@ -131,9 +131,6 @@ body
     align-items: center;
     justify-content: space-between;
     opacity:1
-
-    #toggle
-      margin-right: 15px
     div
       display:inline-flex
       align-items:center
@@ -143,20 +140,26 @@ body
         word-break: break-word
         width: 50%
         margin:0
-        ::before
-              position: absolute;
-              top: 2px;
-              left: 0;
-              bottom: 0;
-              margin: auto;
-              content: "";
-              width: 0px;
-              height: 2px;
-              background-color: rgba(56, 52, 62, 0.3);
-
-              transition: width 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
-      span
-        width: 50%     
+        span{
+          position:relative;
+          &:before{
+            position: absolute;
+            top: 2px;
+            left: 0;
+            bottom: 0;
+            margin: auto;
+            content: "";
+            width: 0px;
+            height: 2px;
+            background-color: rgba(56, 52, 62, 0.3);
+            -webkit-transition: width 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
+            transition: width 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
+          }
+        }
+        
+        .done:before{
+          width:100% !important;
+        }
     .close
       float: right;
       cursor: pointer;
