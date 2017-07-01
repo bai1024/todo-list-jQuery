@@ -4,7 +4,8 @@
 
 <p align="center">
 
-    <img src="http://ok7n02kz6.bkt.clouddn.com/Fn0u5z0Fr-pYqaTtSm78DtOYnGU2.gif" alt="images">
+<img src="http://ok7n02kz6.bkt.clouddn.com/Fn0u5z0Fr-pYqaTtSm78DtOYnGU2.gif" alt="image">
+
 </p>    
 
 ### Features
